@@ -1,5 +1,3 @@
 *.exe
 /../*.exe
 .idea/
-/../cmake-build-debug/
-/**/.*.docx#
