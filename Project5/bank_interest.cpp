@@ -16,7 +16,7 @@ int main() {
     do{
         cin >> deposit;
         if (deposit < 0)
-            cout << "Deposit cannot be negative, enter again.\n"
+            cout << "Deposit cannot be negative, enter again.\n";
     } while (deposit < 0);
 
     cout << "Interest rate: (8% then enter 8)\t";
