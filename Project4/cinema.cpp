@@ -20,46 +20,59 @@ int main() {
             SENIOR_DISCOUNT_RATE = 0.3;
 
     cout << setw(WIDTH_COLUMN1) << left << "How old are you:";
-    cin >> age;
 
-    // Initialize Customer Class and adjust multiplier
-    // so that the price will be calculated after discount
-    // Also announce customer his discount
-    if (age < CHILD_AGE_CEIL) {
-        multiplier = 1 - CHILD_DISCOUNT_RATE;
-        clazz = "Child";
-        cout << "Child: Discount " << CHILD_DISCOUNT_RATE * 100 << '%' << endl;
-    } else if (age < SENIOR_AGE_FLOOR) {
-        clazz = "Adult";
-    } else {
-        multiplier = 1 - SENIOR_DISCOUNT_RATE;
-        clazz = "Senior Citizen";
-        cout << "Senior Citizen: Discount " << SENIOR_DISCOUNT_RATE * 100
-             << '%' << endl;
-    }
+    do {
+        cin >> age;
+
+        if (age < 0 || age > 129) {
+            cout << "Invalid age. Enter a valid age\n";
+            continue;
+        }
+
+        // Initialize Customer Class and adjust multiplier
+        // so that the price will be calculated after discount
+        // Also announce customer his discount
+        if (age < CHILD_AGE_CEIL) {
+            multiplier = 1 - CHILD_DISCOUNT_RATE;
+            clazz = "Child";
+            cout << "Child: Discount " << CHILD_DISCOUNT_RATE * 100 << '%' << endl;
+        } else if (age < SENIOR_AGE_FLOOR) {
+            clazz = "Adult";
+        } else {
+            multiplier = 1 - SENIOR_DISCOUNT_RATE;
+            clazz = "Senior Citizen";
+            cout << "Senior Citizen: Discount " << SENIOR_DISCOUNT_RATE * 100
+                 << '%' << endl;
+        }
+
+    } while (age <0 || age > 129);
 
     char y_or_n;
-    cin.ignore(MAX_BUFFER, '\n');
     cout << setw(WIDTH_COLUMN1) << left << "Is your ticket on weekend: (Y/N)";
-    cin.get(y_or_n);
-    switch (y_or_n) {
-        case 'y':
-        case 'Y':
-            cost = 10.0;
-            date = "Weekend";
-            break;
-        case 'n':
-        case 'N':
-            break;
-        default:
-            cout << "\nYou enter an invalid information."
-                 << "Please restart the program.\n";
-            return 1;
-    }
+
+    do {
+        cin.ignore(MAX_BUFFER, '\n');
+        cin.get(y_or_n);
+        switch (y_or_n) {
+            case 'y':
+            case 'Y':
+                cost = 10.0;
+                date = "Weekend";
+                break;
+            case 'n':
+            case 'N':
+                break;
+            default:
+                cout << "\nYou must only enter yes or no. "
+                     << "Try again with Y/y/N/n.\n";
+                continue;
+        }
+    } while (y_or_n != 'y' && y_or_n != 'Y' && y_or_n != 'n' && y_or_n != 'N');
+
 
     // Select pre-selected movie or a movie of
     // customer preference
-    int choice;
+    int choice = -1;
     cout << setw(WIDTH_COLUMN1) << left << "Which movie would you like to see:"
          << endl;
     cout << setw(WIDTH_COLUMN1) << left << "1. Venom" << endl;
@@ -67,27 +80,32 @@ int main() {
     cout << setw(WIDTH_COLUMN1) << left << "3. X-men" << endl;
     cout << setw(WIDTH_COLUMN1) << left << "4. Other (Enter name)" << endl;
     cout <<  "Your choice: ";
-    cin >> choice;
-    switch (choice) {
-        case 1:
-            movie = "Venom";
-            break;
-        case 2:
-            movie = "Mr.Bean";
-            break;
-        case 3:
-            movie = "X-men";
-            break;
-        case 4:
-            cout << setw(WIDTH_COLUMN1) << left << "Then enter your preferred movie:";
-            cin.ignore(MAX_BUFFER, '\n');
-            getline(cin, movie);
-            break;
-        default:
-            cout << "\nYou enter an invalid information."
-                 << "Please restart the program.\n";
-            return 1;
-    }
+
+    do {
+        cin >> choice;
+
+        switch (choice) {
+            case 1:
+                movie = "Venom";
+                break;
+            case 2:
+                movie = "Mr.Bean";
+                break;
+            case 3:
+                movie = "X-men";
+                break;
+            case 4:
+                cout << setw(WIDTH_COLUMN1) << left << "Then enter your preferred movie:";
+                cin.ignore(MAX_BUFFER, '\n');
+                getline(cin, movie);
+                break;
+            default:
+                cout << "\nYou enter an invalid information."
+                     << "Please restart the program.\n";
+                return 1;
+        }
+    } while (choice < 1 || choice > 4);
+
 
     cout << setw(WIDTH_COLUMN1) << left << "Movie selected:" << movie << endl;
 

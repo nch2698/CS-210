@@ -1,0 +1,1 @@
+/usr/bin/c++  -g   CMakeFiles/SQUARE.dir/square.cpp.o  -o SQUARE 

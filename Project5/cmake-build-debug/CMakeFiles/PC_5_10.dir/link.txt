@@ -1,0 +1,1 @@
+/usr/bin/c++  -g   CMakeFiles/PC_5_10.dir/pc_5_10.cpp.o  -o PC_5_10 
