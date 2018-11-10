@@ -1,8 +1,0 @@
-/home/danielng/Projects/CS-210/Project4/cmake-build-debug/CMakeFiles/rebuild_cache.dir
-/home/danielng/Projects/CS-210/Project4/cmake-build-debug/CMakeFiles/6_5.dir
-/home/danielng/Projects/CS-210/Project4/cmake-build-debug/CMakeFiles/4_10.dir
-/home/danielng/Projects/CS-210/Project4/cmake-build-debug/CMakeFiles/4_37.dir
-/home/danielng/Projects/CS-210/Project4/cmake-build-debug/CMakeFiles/cinema.dir
-/home/danielng/Projects/CS-210/Project4/cmake-build-debug/CMakeFiles/edit_cache.dir
-/home/danielng/Projects/CS-210/Project4/cmake-build-debug/CMakeFiles/4_2.dir
-/home/danielng/Projects/CS-210/Project4/cmake-build-debug/CMakeFiles/4_7.dir

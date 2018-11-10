@@ -1,1 +1,0 @@
-/usr/bin/c++  -g   CMakeFiles/5_9.dir/5_9.cpp.o  -o 5_9 

@@ -1,1 +1,0 @@
-/usr/bin/c++  -g   CMakeFiles/BANK_INTEREST.dir/bank_interest.cpp.o  -o BANK_INTEREST 
