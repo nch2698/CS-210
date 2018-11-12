@@ -36,7 +36,7 @@ int main() {
     cout << setw(5) << "Day" << setw(17) << "Population Size" << endl;
 
     for (int i = 0; i < duration; i++) {
-        cout << setw(5) << i+1 << setw(17) << pow(1 + rate100/100, i)*start << endl;
+        cout << setw(5) << i + 1 << setw(17) << static_cast<int> (pow(1 + rate100 / 100, i) * start) << endl;
     }
 
     return 0;
