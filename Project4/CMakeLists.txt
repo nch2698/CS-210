@@ -21,3 +21,7 @@ add_executable(${BUILD_4_10} ${SOURCE_FILES_4_10})
 set(BUILD_6_5 6_5)
 set(SOURCE_FILES_6_5 6_5.cpp)
 add_executable(${BUILD_6_5} ${SOURCE_FILES_6_5})
+
+set(BUILD_4_3 4_3)
+set(SOURCE_FILES_4_3 4_3.cpp)
+add_executable(${BUILD_4_3} ${SOURCE_FILES_4_3})
