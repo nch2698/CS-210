@@ -46,7 +46,7 @@ int main(){
     total = airFare + carRent + privateDrive + parking + taxi + meeting + hotel + mealFee;
     totalExcess = parkingExcess + taxiExcess + mealExcess;
 	cout << "\nCalculations" << endl
-		 << "-------------" <<;
+		 << "-------------" << endl;
 	cout << left << setw(20) << "\nDays: " << day << setw(20) << "\nAirFare: " << airFare <<  setw(20) << "\nCar Rentals" << carRent 
 	     << setw(20) << "\nPrivateDrive: " << privateDrive << setw(20) << "\nParking: " << parking << setw(20) << "\nTaxi: " << taxi 
 		 << setw(20) << "\nConference: "  << meeting << setw(20) << "\nHotel: " << hotel << setw(20) << "\nMeal Fee: " << mealFee
@@ -77,10 +77,10 @@ void getTime (int& day, double& depart, double& back){
     do{
    	    cout << "The time of arrival back home on the last day of the trip (from 5 to 23)? ";
     	cin >> back;
-    	 if (back < 5 || back > 22){
+    	 if (back < 5 || back > 23){
 	    	cout << "Invalid time." << endl;
 		} 
-	} while (back < 5 || back > 22);		
+	} while (back < 5 || back > 23);		
 }
 
 void getAirFare (double& airFare){
