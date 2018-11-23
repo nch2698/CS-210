@@ -17,3 +17,11 @@ add_executable(${BUILD_6_1} ${SOURCE_FILES_6_1})
 set(BUILD_6_2 6_2)
 set(SOURCE_FILES_6_2 pc_6_2.cpp)
 add_executable(${BUILD_6_2} ${SOURCE_FILES_6_2})
+
+set(BUILD_6_5 6_5)
+set(SOURCE_FILES_6_5 pc_6_5.cpp)
+add_executable(${BUILD_6_5} ${SOURCE_FILES_6_5})
+
+set(BUILD_6_9 6_9)
+set(SOURCE_FILES_6_9 pc_6_9.cpp)
+add_executable(${BUILD_6_9} ${SOURCE_FILES_6_9})
