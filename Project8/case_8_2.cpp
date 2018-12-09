@@ -1,5 +1,6 @@
 #include <iostream>
 #include <iomanip>
+#include <cmath>
 
 using namespace std;
 
@@ -34,7 +35,7 @@ int binarySearch(const int entity) {
             right_bound = size - 1,
             cursor = (left_bound + right_bound) / 2;
     while (true) {
-        if (right_bound - left_bound <= 1 && STORE[cursor].number != entity) return -1;
+        if (right_bound - left_bound <= 0 && STORE[cursor].number != entity) return -1;
 
         if (STORE[cursor].number == entity) {
             return cursor;
@@ -43,7 +44,47 @@ int binarySearch(const int entity) {
             cursor = (left_bound + right_bound) / 2;
         } else {
             left_bound = cursor;
+            cursor = static_cast<int>(ceil((left_bound + right_bound) / 2.0));
+        }
+    }
+}
+
+int binarySearch(string name) {
+    const int size = 9;
+    int left_bound = 0,
+            right_bound = size - 1,
             cursor = (left_bound + right_bound) / 2;
+    while (true) {
+        if (right_bound - left_bound <= 0 && STORE[cursor].name != name) return -1;
+
+        if (STORE[cursor].name == name) {
+            return cursor;
+        } else if (STORE[cursor].name > name) {
+            right_bound = cursor;
+            cursor = (left_bound + right_bound) / 2;
+        } else {
+            left_bound = cursor;
+            cursor = static_cast<int>(ceil((left_bound + right_bound) / 2.0));
+        }
+    }
+}
+
+int binarySearch(double price) {
+    const int size = 9;
+    int left_bound = 0,
+            right_bound = size - 1,
+            cursor = (left_bound + right_bound) / 2;
+    while (true) {
+        if (right_bound - left_bound <= 0 && STORE[cursor].price != price) return -1;
+
+        if (STORE[cursor].price == price) {
+            return cursor;
+        } else if (STORE[cursor].price > price) {
+            right_bound = cursor;
+            cursor = (left_bound + right_bound) / 2;
+        } else {
+            left_bound = cursor;
+            cursor = static_cast<int>(ceil((left_bound + right_bound) / 2.0));
         }
     }
 }
@@ -53,6 +94,46 @@ void printProduct(int id) {
 
     if (prodID == -1) {
         cout << "Unable to find Product with id " << id << endl;
+    } else {
+        cout << setw(30) << left << "Product Title"
+             << setw(25) << "Product Description"
+             << setw(20) << "Product Number"
+             << setw(15) << "Unit Price"
+             << endl;
+
+        cout << setw(30) << left << STORE[prodID].name
+             << setw(25) << prodTypeStr[STORE[prodID].type]
+             << setw(20) << STORE[prodID].number << '$'
+             << setw(14) << STORE[prodID].price
+             << endl;
+    }
+}
+
+void printProduct(string name) {
+    int prodID = binarySearch(name);
+
+    if (prodID == -1) {
+        cout << "Unable to find Product with name " << name << endl;
+    } else {
+        cout << setw(30) << left << "Product Title"
+             << setw(25) << "Product Description"
+             << setw(20) << "Product Number"
+             << setw(15) << "Unit Price"
+             << endl;
+
+        cout << setw(30) << left << STORE[prodID].name
+             << setw(25) << prodTypeStr[STORE[prodID].type]
+             << setw(20) << STORE[prodID].number << '$'
+             << setw(14) << STORE[prodID].price
+             << endl;
+    }
+}
+
+void printProduct(double price) {
+    int prodID = binarySearch(price);
+
+    if (prodID == -1) {
+        cout << "Unable to find Product with price " << price << endl;
     } else {
         cout << setw(30) << left << "Product Title"
              << setw(25) << "Product Description"
