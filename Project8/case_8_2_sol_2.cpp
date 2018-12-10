@@ -1,6 +1,7 @@
 #include <iostream>
 #include <iomanip>
 #include <cmath>
+#include <string>
 
 using namespace std;
 
@@ -130,10 +131,13 @@ void sortByNumber() {
 
 int binarySearch(int productID) {
 
-    int leftBound = 0, rightBound = PRODUCTS - 1, cursor = (leftBound + rightBound) / 2;
+    int leftBound = 0, rightBound = PRODUCTS - 1,
+            cursor = (leftBound + rightBound) / 2;
 
     for (;;) {
-        if (rightBound - leftBound <= 1 && PRODUCT_NUMBER[cursor] != productID) return -1;
+        if (rightBound - leftBound <= 1
+            && PRODUCT_NUMBER[cursor] != productID)
+            return -1;
 
         if (PRODUCT_NUMBER[cursor] == productID) return cursor;
         else if (PRODUCT_NUMBER[cursor] > productID) {
@@ -141,16 +145,20 @@ int binarySearch(int productID) {
             cursor = (leftBound + rightBound) / 2;
         } else {
             leftBound = cursor;
-            cursor = static_cast<int>(ceil((leftBound + rightBound) / 2.0));
+            cursor = static_cast<int>(
+                    ceil((leftBound + rightBound) / 2.0));
         }
     }
 }
 
 int binarySearch(const string &title) {
-    int leftBound = 0, rightBound = PRODUCTS - 1, cursor = (leftBound + rightBound) / 2;
+    int leftBound = 0, rightBound = PRODUCTS - 1,
+            cursor = (leftBound + rightBound) / 2;
 
     for (;;) {
-        if (rightBound - leftBound <= 1 && PRODUCT_TITLE[cursor] != title) return -1;
+        if (rightBound - leftBound <= 1
+            && PRODUCT_TITLE[cursor] != title)
+            return -1;
 
         if (PRODUCT_TITLE[cursor] == title) return cursor;
         else if (PRODUCT_TITLE[cursor] > title) {
@@ -158,16 +166,20 @@ int binarySearch(const string &title) {
             cursor = (leftBound + rightBound) / 2;
         } else {
             leftBound = cursor;
-            cursor = static_cast<int>(ceil((leftBound + rightBound) / 2.0));
+            cursor = static_cast<int>(
+                    ceil((leftBound + rightBound) / 2.0));
         }
     }
 }
 
 int binarySearch(double price) {
-    int leftBound = 0, rightBound = PRODUCTS - 1, cursor = (leftBound + rightBound) / 2;
+    int leftBound = 0, rightBound = PRODUCTS - 1,
+            cursor = (leftBound + rightBound) / 2;
 
     for (;;) {
-        if (rightBound - leftBound <= 1 && PRODUCT_PRICE[cursor] != price) return -1;
+        if (rightBound - leftBound <= 1
+            && PRODUCT_PRICE[cursor] != price)
+            return -1;
 
         if (PRODUCT_PRICE[cursor] == price) return cursor;
         else if (PRODUCT_PRICE[cursor] > price) {
@@ -175,7 +187,8 @@ int binarySearch(double price) {
             cursor = (leftBound + rightBound) / 2;
         } else {
             leftBound = cursor;
-            cursor = static_cast<int>(ceil((leftBound + rightBound) / 2.0));
+            cursor = static_cast<int>(
+                    ceil((leftBound + rightBound) / 2.0));
         }
     }
 }
@@ -273,7 +286,9 @@ int main() {
                 printAllProducts();
                 break;
             case 2: {
-                int id; // if not surrounded by a bracket compiler will throw an error
+                // if not surrounded by a bracket
+                // compiler will throw an error
+                int id;
                 cout << "\n\nWhich Product do you want to search (id):\t";
                 cin >> id;
                 if (currentlySorted != ID) sortByNumber();
