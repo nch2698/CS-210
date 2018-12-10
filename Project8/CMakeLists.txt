@@ -9,3 +9,7 @@ add_executable(${BUILD_8_2} ${SOURCE_FILES_8_2})
 set(BUILD_C_8_2 C_8_2)
 set(SOURCE_FILES_C_8_2 case_8_2.cpp)
 add_executable(${BUILD_C_8_2} ${SOURCE_FILES_C_8_2})
+
+set(BUILD_C_8_2_2 C_8_2_2)
+set(SOURCE_FILES_C_8_2_2 case_8_2_sol_2.cpp)
+add_executable(${BUILD_C_8_2_2} ${SOURCE_FILES_C_8_2_2})
