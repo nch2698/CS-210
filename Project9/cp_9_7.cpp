@@ -1,4 +1,15 @@
-//
-// Created by danielng on 19/12/2018.
-//
+#include <iostream>
 
+using namespace std;
+
+int main() {
+    int *pint = nullptr;
+
+    pint++;
+    --pint;
+    // pint /= 2;
+    // pint *= 4;
+    pint += 2;
+
+    return 0;
+}
