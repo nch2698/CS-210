@@ -21,3 +21,7 @@ add_executable(${BUILD_PC_9_1} ${SOURCE_FILES_PC_9_1})
 set(BUILD_PC_9_8 9_8)
 set(SOURCE_FILES_PC_9_8 pc_9_8_9_14.cpp)
 add_executable(${BUILD_PC_9_8} ${SOURCE_FILES_PC_9_8})
+
+set(BUILD_MAXMIN MAXMIN)
+set(SOURCE_FILES_MAXMIN max_min.cpp)
+add_executable(${BUILD_MAXMIN} ${SOURCE_FILES_MAXMIN})
