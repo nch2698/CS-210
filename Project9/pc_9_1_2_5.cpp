@@ -6,7 +6,8 @@ int *allocIntArr(int size, int min, int max) {
     int *dest = new int[size];
     for (int i = 0; i < size; ++i) {
         do {
-            cout << "Enter element " << i << " for integers array:\t";
+            cout << "Enter element " << i
+                 << " for integers array:\t";
             cin >> dest[i];
             if (dest[i] < min || dest[i] > max)
                 cout << "Invalid data. Try again.";
@@ -39,7 +40,7 @@ double getAvg(const int *list, int size) {
     for (int i = 0; i < size; ++i) {
         temp += list[i];
     }
-    return temp/size;
+    return temp / size;
 }
 
 char *getString() {
@@ -61,5 +62,53 @@ char *getString() {
 }
 
 int main() {
+
+    cout << "=====================\n";
+
+    int size;
+    cout << "How many elements do you want?:\t";
+    do {
+        cin >> size;
+        if (size < 0)
+            cout << "That must be > 0. Try again.";
+    } while (size < 0);
+
+    int *l = allocIntArr(size);
+
+    cout << "\nYou just entered a list of: ";
+    for (int i = 0; i < size; ++i) {
+        cout << l[i] << ", ";
+    }
+    cout << endl;
+    delete[] l;
+
+    cout << "=====================\n";
+
+    cout << "How many tests are there?\t";
+    cin >> size;
+
+    int *tests = allocIntArr(size, 0, 100);
+    selSort(tests, size);
+
+    cout << "\n\nYour test scores are:\t";
+    for (int j = 0; j < size; ++j) {
+        cout << tests[j] << ", ";
+    }
+    cout << "\nYour average score is: "
+         << getAvg(tests, size);
+    cout << endl;
+    delete[] tests;
+
+    cout << "=====================\n";
+
+    cout << "\nEnter some sentence.\n";
+    char *sent = getString();
+
+    cout << "\n\nYou just entered:\t"
+         << sent << endl;
+
+    delete[] sent;
+    cout << "=====================\n";
+
     return 0;
 }

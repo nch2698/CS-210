@@ -22,9 +22,14 @@ int main() {
     int hour = 10, minute = 59;
     char am_or_pm = 'p';
 
+    cout << "Add 1 minute to "
+         << hour << ':' << minute << ' ' << "PM";
+
     add_a_minute(&hour, &minute, &am_or_pm);
 
-    cout << hour << ':' << minute << ' ' << am_or_pm << endl;
+    cout << " and it becomes "
+         << hour << ':' << minute << ' '
+         << (am_or_pm == 'a' ? "AM" : "PM") << endl;
 
     return 0;
 }
