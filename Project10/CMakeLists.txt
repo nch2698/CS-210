@@ -13,3 +13,7 @@ add_executable(${BUILD_PC_10_3} ${SOURCE_FILES_PC_10_3})
 set(BUILD_PC_10_4 10_4)
 set(SOURCE_FILES_PC_10_4 pc_10_4.cpp)
 add_executable(${BUILD_PC_10_4} ${SOURCE_FILES_PC_10_4})
+
+set(BUILD_trim trim)
+set(SOURCE_FILES_trim trim.cpp)
+add_executable(${BUILD_trim} ${SOURCE_FILES_trim})
