@@ -1,13 +1,17 @@
 #include <iostream>
 #include <cstring>
+#include <string>
+
 using namespace std;
+
 char mostFrequentCharacter(char *word);
 char mostFrequentCharacter(string word);
+
 int main(){
 	//Choose input type
 	int choice;
 	do {
-		cout << "Do you likr to enter a c-style string or string object (0,1)?";
+		cout << "Do you like to enter a c-style string or string object (0,1)?";
 		cin >> choice;	
 	}while(choice != 0 && choice != 1);
 	
