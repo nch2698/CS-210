@@ -29,3 +29,7 @@ add_executable(${BUILD_pig_latin} ${SOURCE_FILES_pig_latin})
 set(BUILD_vowels_detection vowels_detection)
 set(SOURCE_FILES_vowels_detection vowels_detection.cpp)
 add_executable(${BUILD_vowels_detection} ${SOURCE_FILES_vowels_detection})
+
+set(BUILD_lab1 lab1)
+set(SOURCE_FILES_lab1 lab1.cpp)
+add_executable(${BUILD_lab1} ${SOURCE_FILES_lab1})
