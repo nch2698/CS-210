@@ -42,8 +42,8 @@ void toReverse(char *str){
 	size_t l = strlen(str);
 	char ptr[l];
 	for (int i=0;i < l;i++){
-		if (islower(str[i])) ptr[i] = toupper(str[i]);
-		else if (isupper(str[i])) ptr[i] = tolower(str[i]);
+		if (islower(str[i])) ptr[i] = static_cast<char>(toupper(str[i]));
+		else if (isupper(str[i])) ptr[i] = static_cast<char>(tolower(str[i]));
 		else ptr[i] = str[i];
 	}
 	cout << "\nYour string after call toReverse function: " << ptr;
