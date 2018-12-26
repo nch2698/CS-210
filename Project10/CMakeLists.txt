@@ -17,3 +17,11 @@ add_executable(${BUILD_PC_10_4} ${SOURCE_FILES_PC_10_4})
 set(BUILD_trim trim)
 set(SOURCE_FILES_trim trim.cpp)
 add_executable(${BUILD_trim} ${SOURCE_FILES_trim})
+
+set(BUILD_PC_10_9 10_9)
+set(SOURCE_FILES_PC_10_9 pc_10_9.cpp)
+add_executable(${BUILD_PC_10_9} ${SOURCE_FILES_PC_10_9})
+
+set(BUILD_pig_latin pig_latin)
+set(SOURCE_FILES_pig_latin pig_latin.cpp)
+add_executable(${BUILD_pig_latin} ${SOURCE_FILES_pig_latin})
