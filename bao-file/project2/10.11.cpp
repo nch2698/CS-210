@@ -23,39 +23,28 @@ int main(){
 }
 
 void toUpper(char *str){
-	int i=0;
-	char ptr[SIZE];
-	for (int i=0;i < strlen(str);i++)
-		ptr[i] = str[i];
-	while (ptr[i] != '\0'){
-		ptr[i] = toupper(ptr[i]);
-		i++;
-	}
+	size_t l = strlen(str);
+	char ptr[l];
+	for (int i=0;i < l;i++)
+		ptr[i] = static_cast<char>(toupper(str[i]));
 	cout << "\nYour string after call toUpper function: " << ptr;
 }
 
 void toLower(char *str){
-	int i=0;
-	char ptr[SIZE];
-	for (int i=0;i < strlen(str);i++)
-		ptr[i] = str[i];
-	while (ptr[i] != '\0'){
-		ptr[i] = tolower(ptr[i]);
-		i++;
-	}
+	size_t l = strlen(str);
+	char ptr[l];
+	for (int i=0;i < l;i++)
+		ptr[i] = static_cast<char>(tolower(str[i]));
 	cout << "\nYour string after call toLower function: " << ptr;
 }
 
 void toReverse(char *str){
-	int i=0;
-	char ptr[SIZE];
-	for (int i=0;i < strlen(str);i++)
-		ptr[i] = str[i];
-		
-	while (ptr[i] != '\0'){
-		if (islower(ptr[i])) ptr[i] = toupper(ptr[i]);
-		else if (isupper(ptr[i])) ptr[i] = tolower(ptr[i]);
-		i++;
+	size_t l = strlen(str);
+	char ptr[l];
+	for (int i=0;i < l;i++){
+		if (islower(str[i])) ptr[i] = toupper(str[i]);
+		else if (isupper(str[i])) ptr[i] = tolower(str[i]);
+		else ptr[i] = str[i];
 	}
 	cout << "\nYour string after call toReverse function: " << ptr;
 }
