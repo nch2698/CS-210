@@ -12,7 +12,7 @@ double avgLetters(char *str) {
     bool isCurrentWord = false;
 
     for (int i = 0; i < len; ++i) {
-        if (isspace(str[i]) == 0) {
+        if (isalnum(str[i]) != 0) {
             if (!isCurrentWord) {
                 isCurrentWord = true;
                 count++;
