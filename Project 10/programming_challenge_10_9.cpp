@@ -5,9 +5,8 @@
 using namespace std;
 
 int *appearTimes(char *arr){
-	static int counter[95];
+	int counter[95] = {0};
 
-	for (int i = 0; i < 95; i++) counter[i] = 0;
 	for (int i = 0;i < strlen(arr); i++){
 		if(isprint(arr[i])){
 			counter[(arr[i]) - 32]++;		
@@ -17,9 +16,8 @@ int *appearTimes(char *arr){
 }
 
 int *appearTimes(string arr){
-	static int counter[95];
+	int counter[95] = {0};
 	
-	for (int i = 0; i < 95; i++) counter[i] = 0;
 	for (int i = 0;i < arr.length(); i++){
 		if(isprint(arr[i])){
 			counter[(arr[i]) - 32]++;		
