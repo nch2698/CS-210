@@ -37,3 +37,7 @@ add_executable(${BUILD_lab1} ${SOURCE_FILES_lab1})
 set(BUILD_PC_10_10 10_10)
 set(SOURCE_FILES_PC_10_10 pc_10_10.cpp)
 add_executable(${BUILD_PC_10_10} ${SOURCE_FILES_PC_10_10})
+
+set(BUILD_PC_10_11 10_11)
+set(SOURCE_FILES_PC_10_11 pc_10_11.cpp)
+add_executable(${BUILD_PC_10_11} ${SOURCE_FILES_PC_10_11})
