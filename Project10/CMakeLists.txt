@@ -33,3 +33,7 @@ add_executable(${BUILD_vowels_detection} ${SOURCE_FILES_vowels_detection})
 set(BUILD_lab1 lab1)
 set(SOURCE_FILES_lab1 lab1.cpp)
 add_executable(${BUILD_lab1} ${SOURCE_FILES_lab1})
+
+set(BUILD_PC_10_10 10_10)
+set(SOURCE_FILES_PC_10_10 pc_10_10.cpp)
+add_executable(${BUILD_PC_10_10} ${SOURCE_FILES_PC_10_10})
