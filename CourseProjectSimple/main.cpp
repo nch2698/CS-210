@@ -867,6 +867,12 @@ bool validDay(Date &date) {
 
 void assertDate(Date &date) {
     do {
+        if (cin.fail()) {
+            cout << "Expecting a number, try again!" << endl;
+            cin.clear();
+            cin.ignore(MAX_BUFFER, '\n');
+            cin.putback('\n');
+        }
         cin >> date.dd >> date.mm >> date.yy;
         if (!validMonth(date)) {
             cout << "Invalid month! Enter again.\n";
