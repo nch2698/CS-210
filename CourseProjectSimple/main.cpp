@@ -860,9 +860,9 @@ bool validMonth(Date &date) {
 
 bool validDay(Date &date) {
     if (date.yy % 4 == 0)
-        return date.dd > 0 && date.dd < MONTHS_DAYS_4[date.mm -1];
+        return date.dd > 0 && date.dd <= MONTHS_DAYS_4[date.mm -1];
     else
-        return date.dd > 0 && date.dd < MONTHS_DAYS[date.mm - 1];
+        return date.dd > 0 && date.dd <= MONTHS_DAYS[date.mm - 1];
 }
 
 void assertDate(Date &date) {
