@@ -388,6 +388,12 @@ void deadlineMenu() {
         default:
             cout << "Invalid argument. Returning to main menu.\n";
     }
+    //Raw idea of keep working with current menu  in case when you have to work multiple times and do not return to main menu  
+    char loop;
+    cout << "\n Keep staying in the deadline Menu? (y/n) ";
+    cin >> loop;
+    if (loop == 'y')
+    	deadlineMenu();
 }
 
 void editDueDate() {
