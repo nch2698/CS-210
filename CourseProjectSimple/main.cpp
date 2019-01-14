@@ -218,7 +218,7 @@ void groupInfoMenu() {
 void enterGroupsInfo(Group **oldGroupsLoc) {
     cout << "How many groups are there?\t";
     int groupNum;
-    assertInt(groupNum, 0, MAX_INT_16);
+    assertInt(groupNum, 1, MAX_INT_16);
 
     if (*oldGroupsLoc == nullptr) {
         *oldGroupsLoc = new Group[groupNum];
@@ -226,10 +226,6 @@ void enterGroupsInfo(Group **oldGroupsLoc) {
         clearGroupMemory(groupNum);
     } else {
         Group *temp = new Group[groupNum];
-
-        for (int i = 0; i < currentNumberOfGroups; ++i) {
-            temp[i] = *(*oldGroupsLoc + i);
-        }
 
         delete[] *oldGroupsLoc;
         *oldGroupsLoc = temp;
@@ -785,7 +781,7 @@ void getChar(char &c) {
 
 void assertInt(int &i, int min, int max) {
     if (min > max) {
-        cout << "Invalid action. May be you want to enter data first.\n";
+        cout << "\nInvalid action. May be you want to enter data first.\n";
     }
     do {
         if (cin.fail()) {
@@ -860,9 +856,9 @@ bool validMonth(Date &date) {
 
 bool validDay(Date &date) {
     if (date.yy % 4 == 0)
-        return date.dd > 0 && date.dd < MONTHS_DAYS_4[date.mm];
+        return date.dd > 0 && date.dd <= MONTHS_DAYS_4[date.mm -1];
     else
-        return date.dd > 0 && date.dd < MONTHS_DAYS[date.mm];
+        return date.dd > 0 && date.dd <= MONTHS_DAYS[date.mm - 1];
 }
 
 void assertDate(Date &date) {
@@ -875,11 +871,11 @@ void assertDate(Date &date) {
         }
         cin >> date.dd >> date.mm >> date.yy;
         if (!validMonth(date)) {
-            cout << "Invalid month! Enter again.\n";
+            cout << "\nInvalid month! Enter again.\n";
             continue;
         }
         if (!validDay(date)) {
-            cout << "Invalid Day! Enter again.\n";
+            cout << "\nInvalid Day! Enter again.\n";
         }
     } while (!validMonth(date) || !validDay(date));
 }
