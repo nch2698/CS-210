@@ -20,8 +20,8 @@ const char *PROGRAM_NAME = "Project Manager";
 const char *INITIAL = ">_ ";
 const char *BAR = " | ";
 
-const char *GROUPS_SAVED_PATH = "groups.txt";
-const char *STATISTICS_SAVED_PATH = "Overall Statistics.txt";
+const char *GROUPS_SAVED_PATH = "/home/danielng/Projects/CS-210/CourseProjectSimple/groups.txt";
+const char *STATISTICS_SAVED_PATH = "/home/danielng/Projects/CS-210/CourseProjectSimple/Overall Statistics.txt";
 
 const int MONTHS_DAYS[] = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
 const int MONTHS_DAYS_4[] = {31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
@@ -82,7 +82,11 @@ void editDueDate();
 
 void editAllDueDate();
 
-void submitProjectToGroup();
+void printAllDueDates();
+
+void printSubmissionDate(int);
+
+void submitProjectToGroup(int);
 
 void statisticsMenu();
 
@@ -363,7 +367,9 @@ void deadlineMenu() {
          << "1. Enter a deadline\n"
          << "2. Enter a all deadlines\n"
          << "3. Submit a group project\n"
-         << "4. Return to main menu\n";
+         << "4. Review all due dates\n"
+         << "5. Review all submission\n"
+         << "6. Return to main menu\n";
 
     char c;
     getChar(c);
@@ -375,10 +381,24 @@ void deadlineMenu() {
         case '2':
             editAllDueDate();
             break;
-        case '3':
-            submitProjectToGroup();
+        case '3': {
+            cout << "Which group do you want to submit?\t";
+            int groupName;
+            assertInt(groupName, 1, currentNumberOfGroups);
+            submitProjectToGroup(groupName);
+        }
             break;
         case '4':
+            printAllDueDates();
+            break;
+        case '5': {
+            cout << "Which group do you want to check?\t";
+            int groupName;
+            assertInt(groupName, 1, currentNumberOfGroups);
+            printSubmissionDate(groupName);
+        }
+            break;
+        case '6':
             mainMenu();
             break;
         default:
@@ -433,21 +453,42 @@ void editAllDueDate() {
     }
 }
 
-void submitProjectToGroup() {
-    cout << "Which group do you want to submit?\t";
-    int groupName;
-    assertInt(groupName, 1, currentNumberOfGroups);
+void printAllDueDates() {
+    for (int i = 0; i < currentNumberOfProjects; ++i) {
+        cout << "Project " << i + 1 << ": "
+             << _dueDates[i].dd << '/' << _dueDates[i].mm << '/' << _dueDates[i].yy
+             << endl;
+    }
+}
 
-    cout << "Which project do you want to submit?\t";
-    int proj;
-    assertInt(proj, 1, currentNumberOfProjects);
+void printSubmissionDate(int group) {
+    for (int i = 0; i < currentNumberOfProjects; ++i) {
+        Date d = _groups[group - 1].submitProjects[i];
+        cout << "Project " << i + 1 << ": ";
+        if (_groups[group - 1].submit[i])
+            cout << d.dd << '/' << d.mm << '/' << d.yy << endl;
+        else
+            cout << "Not submitted" << endl;
+    }
+}
 
-    cout << "When does this group submit? (dd/mm/yyyy)\t";
-    Date submitDate = {};
-    assertDate(submitDate);
+void submitProjectToGroup(int groupName) {
+    char cont;
+    do {
+        cout << "Which project do you want to submit?\t";
+        int proj;
+        assertInt(proj, 1, currentNumberOfProjects);
 
-    _groups[groupName - 1].submitProjects[proj - 1] = submitDate;
-    _groups[groupName - 1].submit[proj - 1] = true;
+        cout << "When does this group submit? (dd/mm/yyyy)\t";
+        Date submitDate = {};
+        assertDate(submitDate);
+
+        _groups[groupName - 1].submitProjects[proj - 1] = submitDate;
+        _groups[groupName - 1].submit[proj - 1] = true;
+
+        cout << "Do you want to continue submitting project to this group? (y/n)\t";
+        assertYesNo(cont);
+    } while (cont == 'y' || cont == 'Y');
 }
 
 void statisticsMenu() {
@@ -508,6 +549,10 @@ void statisticsOfAProject() {
     }
 
     cout << BAR << endl;
+
+    cout << "Project due date: "
+         << _dueDates[proj - 1].dd << '/' << _dueDates[proj - 1].mm << '/' << _dueDates[proj - 1].yy
+         << endl;
 }
 
 void statisticsOfAGroup() {
@@ -767,7 +812,7 @@ void failGroups() {
     if (n >= 1)
         cout << "did not complete the course.\n";
     else
-        cout << "All groups complete the course.\n";
+        cout << "All groups complete the course or neither of them.\n";
 }
 
 /**
@@ -814,7 +859,7 @@ void assertYesNo(char &c) {
     do {
         getChar(c);
         if (c != 'y' && c != 'Y' && c != 'n' && c != 'N')
-            cout << "Only accept (Y)es or (N)o value.\n";
+            cout << "\nOnly accept (Y)es or (N)o value.\n";
     } while (c != 'y' && c != 'Y' && c != 'n' && c != 'N');
 }
 
@@ -856,7 +901,7 @@ bool validMonth(Date &date) {
 
 bool validDay(Date &date) {
     if (date.yy % 4 == 0)
-        return date.dd > 0 && date.dd <= MONTHS_DAYS_4[date.mm -1];
+        return date.dd > 0 && date.dd <= MONTHS_DAYS_4[date.mm - 1];
     else
         return date.dd > 0 && date.dd <= MONTHS_DAYS[date.mm - 1];
 }
