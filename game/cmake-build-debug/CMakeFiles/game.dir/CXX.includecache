@@ -1,0 +1,32 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+C:/Users/nch/CLionProjects/game/Matrix.h
+iostream
+-
+
+C:/Users/nch/CLionProjects/game/Player.h
+Matrix.h
+C:/Users/nch/CLionProjects/game/Matrix.h
+
+C:/Users/nch/CLionProjects/game/main.cpp
+iostream
+-
+iomanip
+-
+Matrix.h
+C:/Users/nch/CLionProjects/game/Matrix.h
+Player.h
+C:/Users/nch/CLionProjects/game/Player.h
+supplements.h
+C:/Users/nch/CLionProjects/game/supplements.h
+
+C:/Users/nch/CLionProjects/game/supplements.h
+string
+-
+
