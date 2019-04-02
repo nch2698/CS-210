@@ -69,10 +69,26 @@ public class BankAccountApplet extends JApplet {
         initPanel.add(submit, gbc);
 
         gbc.gridy = 0;
+        JPanel infoPanel = new JPanel();
+        infoPanel.setVisible(false);
+        infoPanel.setBorder(BorderFactory.createTitledBorder("Info"));
+        this.getContentPane().add(infoPanel, gbc);
+
+        gbc.gridy = 1;
         JPanel transferPanel = new JPanel();
         transferPanel.setVisible(false);
         transferPanel.setBorder(BorderFactory.createTitledBorder("Transfer Money"));
         this.getContentPane().add(transferPanel, gbc);
+
+        JLabel dadInfo = new JLabel("Dad has $0");
+        JLabel momInfo = new JLabel("Mom has $0");
+        JLabel sonInfo = new JLabel("Son has $0");
+
+        infoPanel.add(dadInfo, 0);
+        infoPanel.add(new JSeparator(JSeparator.VERTICAL), 1);
+        infoPanel.add(momInfo, 2);
+        infoPanel.add(new JSeparator(JSeparator.VERTICAL), 3);
+        infoPanel.add(sonInfo, 4);
 
         JPanel fromPanel = new JPanel();
         JPanel toPanel = new JPanel();
@@ -112,8 +128,13 @@ public class BankAccountApplet extends JApplet {
 
             sonAcc = new BankAccount(sonNameField.getText());
             sonAcc.credit(Double.parseDouble(sonBalance.getText()));
+
+            updateInfo(dadInfo, momInfo, sonInfo);
+
             initPanel.setVisible(false);
             transferPanel.setVisible(true);
+            infoPanel.setVisible(true);
+
         });
         transfer.addActionListener(event -> {
             double amount = Double.parseDouble(amountField.getText());
@@ -130,7 +151,16 @@ public class BankAccountApplet extends JApplet {
             } else {
                 JOptionPane.showMessageDialog(this, "Failed to transfer $" + amount + " from " + fromAcc.getOwnerName() + " to " + toAcc.getOwnerName());
             }
+
+            updateInfo(dadInfo, momInfo, sonInfo);
         });
+    }
+
+
+    private void updateInfo(JLabel lb1, JLabel lb2, JLabel lb3) {
+        lb1.setText("Dad has $" + dadAcc.getBalance());
+        lb2.setText("Mom has $" + momAcc.getBalance());
+        lb3.setText("Son has $" + sonAcc.getBalance());
     }
 
     private BankAccount getAccount(int code) {
@@ -176,12 +206,5 @@ public class BankAccountApplet extends JApplet {
         form.add(nameField, right);
         form.add(new JLabel(name + " Bank balance: "), left);
         form.add(balance, right);
-    }
-
-    @Override
-    public void start() {
-        super.start();
-
-
     }
 }
