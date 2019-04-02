@@ -13,17 +13,6 @@ public class BankAccountApplet extends JApplet {
     private BankAccount momAcc;
     private BankAccount sonAcc;
 
-    private JTextField dadNameField = new JTextField(FIELD_LEN);
-    private JTextField dadBalance = new JTextField(FIELD_LEN);
-
-    private JTextField momNameField = new JTextField(FIELD_LEN);
-    private JTextField momBalance = new JTextField(FIELD_LEN);
-
-    private JTextField sonNameField = new JTextField(FIELD_LEN);
-    private JTextField sonBalance = new JTextField(FIELD_LEN);
-
-    private JButton submit = new JButton("Submit");
-
     @Override
     public void init() {
         super.init();
@@ -32,6 +21,17 @@ public class BankAccountApplet extends JApplet {
         this.setLayout(new GridBagLayout());
 
         GridBagConstraints gbc = new GridBagConstraints();
+
+        JTextField dadNameField = new JTextField(FIELD_LEN);
+        JTextField dadBalance = new JTextField(FIELD_LEN);
+
+        JTextField momNameField = new JTextField(FIELD_LEN);
+        JTextField momBalance = new JTextField(FIELD_LEN);
+
+        JTextField sonNameField = new JTextField(FIELD_LEN);
+        JTextField sonBalance = new JTextField(FIELD_LEN);
+
+        JButton submit = new JButton("Submit");
 
         gbc.gridy = 0;
         JPanel initPanel = new JPanel();
