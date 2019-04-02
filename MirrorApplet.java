@@ -5,13 +5,13 @@ import java.awt.*;
 
 public class MirrorApplet extends JApplet {
 
-    private static final int WIDTH = 500;
-    private static final int HEIGHT = 500;
+    private static final int WIDTH = 800;
+    private static final int HEIGHT = 600;
 
     private static final int PLUS_SIZE = 20;
     private static final int DIAMOND_WIDTH = 16;
     private static final int DIAMOND_HEIGHT = 18;
-    private static final int MARGIN = 0;
+    private static final int MARGIN = 10;
 
     private static final Color CORNER_COLOR = Color.GREEN;
     private static final Color SIDE_COLOR = Color.YELLOW;
@@ -25,14 +25,16 @@ public class MirrorApplet extends JApplet {
     public void paint(Graphics g) {
         super.paint(g);
 
-        g.drawRect(WIDTH / 4, HEIGHT / 4, WIDTH / 2, HEIGHT / 2);
-        new Diamond(WIDTH / 2, HEIGHT / 2, WIDTH / 2, HEIGHT / 2).draw(g, Color.BLUE);
+        g.setColor(Color.BLUE);
+        g.fillRect(WIDTH / 4, HEIGHT / 4, WIDTH / 2, HEIGHT / 2);
+        g.setColor(Color.BLACK);
+        new Diamond(WIDTH / 2, HEIGHT / 2, WIDTH / 2, HEIGHT / 2).draw(g, Color.CYAN);
 
         drawCorners(g);
 
         drawDiamondsSide(g, WIDTH / 2, HEIGHT / 4, 3 * WIDTH / 4, HEIGHT / 2);
         drawDiamondsSide(g, WIDTH / 2, HEIGHT / 4, WIDTH / 4, HEIGHT / 2);
-        drawDiamondsSide(g, WIDTH / 4, HEIGHT / 2, WIDTH / 2, 3 * HEIGHT / 4);
+        drawDiamondsSide(g, WIDTH / 2, 3 * HEIGHT / 4, WIDTH / 4, HEIGHT / 2);
         drawDiamondsSide(g, WIDTH / 2, 3 * HEIGHT / 4, 3 * WIDTH / 4, HEIGHT / 2);
     }
 
@@ -51,8 +53,8 @@ public class MirrorApplet extends JApplet {
 
         int numberOfShapes = (int) (distance / (Math.sqrt(DIAMOND_WIDTH * DIAMOND_WIDTH + DIAMOND_HEIGHT * DIAMOND_HEIGHT) + MARGIN));
 
-        int stepX = width / numberOfShapes;
-        int stepY = height / numberOfShapes;
+        double stepX = width / numberOfShapes;
+        double stepY = height / numberOfShapes;
 
         if (x1 < x2 && y1 < y2)
             for (int x = x1, y = y1; x <= x2 && y <= y2; x += stepX, y += stepY) {
